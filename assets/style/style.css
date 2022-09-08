@@ -6,3 +6,13 @@
     font-family:'Comfortaa', curesive;
     padding: 10px;
 }
+
+.col-4 {
+    border-style: inset;
+    border-color: black;
+}
+
+.col-8 {
+    border-style: inset;
+    border-color: black;
+}
