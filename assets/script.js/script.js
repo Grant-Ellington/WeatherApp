@@ -2,16 +2,20 @@ var today = document.getElementById('today');
 var fiveDay = document.getElementById('fiveday');
 var searchBtn = document.getElementById('searchBtn');
 var searchInput = document.getElementById('searchInput')
+var searchBtn = document.getElementById('searchBtn')
 
 var key = '8e63ee673b69ef9b660b0e01ef8bfc2a';
+
+
+
+searchBtn.addEventListener('click', forSubmitHandler);
 
 var forSubmitHandler =  function(event) {
     event.preventDefault()
 
-    location = searchinput.value.trim()
-
+    var location = searchInput.value.trim()
     if(location) {
-        findCoordinates(location)
+        getLocation(location)
 
         today.textContent = '';
         searchInput.value = '';
@@ -21,7 +25,8 @@ var forSubmitHandler =  function(event) {
 
 }
 
-var getLocation = function () {
+
+var getLocation = function (location) {
   let cordinateAPI = "http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a"
 
   fetch(cordinateAPI)
@@ -43,21 +48,21 @@ var getLocation = function () {
   
 }
 
+
 var getWeather = function (lat, lon) {
   let weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=' + key;
 
   fetch(weatherAPI)
-    if(response.ok) {
-      response.json().then ( function (data){
-        console.log(data)
-      })
-    } else {
-      console.log('no data')
-    }
+  .then( function (response) {
+    response.json().then( function (data) {
+      console.log(data)
+
+    })
+  })
 }
 getLocation()
 
-fetch('http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a', {
+/*fetch('http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a', {
   // The browser fetches the resource from the remote server without first looking in the cache.
   // The browser will then update the cache with the downloaded resource.
   cache: 'reload',
@@ -67,4 +72,5 @@ fetch('http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e
   })
   .then(function (data) {
     console.log(data);
-  });
+  }); 
+  */
