@@ -24,15 +24,16 @@ var forSubmitHandler =  function(event) {
     }
 
 }
-
-
-var getLocation = function (location) {
-  let cordinateAPI = "http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a"
+ 
+location = "Tennessee"
+var getLocation = function () {
+  let cordinateAPI = "http://api.openweathermap.org/geo/1.0/direct?q="+ location +"&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a"
 
   fetch(cordinateAPI)
     .then(function (response) {
       if (response.ok) {
         response.json().then( function (data) {
+          console.log(data)
           let lat = data[0].lat
           let lon = data[0].lon
           getWeather(lat, lon)
