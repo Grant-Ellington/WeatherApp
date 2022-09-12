@@ -62,9 +62,14 @@ laBtn.addEventListener('click', function () {
 searchBtn.addEventListener('click', function () {
 
   console.log('it works')
-  let city = searchInput.value.trim()
-  getLocation(city);
 
+  let city = searchInput.value.trim()
+
+  if(city) {
+  getLocation(city);
+  } else {
+    alert('please enter a valid location')
+  }
 })
 
 
