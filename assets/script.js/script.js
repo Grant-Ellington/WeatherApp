@@ -6,11 +6,11 @@ var searchBtn = document.getElementById('searchBtn')
 
 var key = '8e63ee673b69ef9b660b0e01ef8bfc2a';
 
+let city = "Nashville"
 
+searchBtn.addEventListener('click', logFunction);
 
-searchBtn.addEventListener('click', forSubmitHandler);
-
-var forSubmitHandler =  function(event) {
+forSubmitHandler =  function(event) {
     event.preventDefault()
 
     var location = searchInput.value.trim()
@@ -24,33 +24,29 @@ var forSubmitHandler =  function(event) {
     }
 
 }
- 
-location = "Tennessee"
-var getLocation = function () {
-  let cordinateAPI = "http://api.openweathermap.org/geo/1.0/direct?q="+ location +"&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a"
 
-  fetch(cordinateAPI)
-    .then(function (response) {
-      if (response.ok) {
-        response.json().then( function (data) {
-          console.log(data)
-          let lat = data[0].lat
-          let lon = data[0].lon
-          getWeather(lat, lon)
-        });
-      }else{
-        console.log ('no data')
-      }
-    })
-  
-  .catch(function (error) {
-    alert('unable to connect to API')
-  })
-  
+
+function logFunction () {
+  console.log('it works');
 }
 
 
-var getWeather = function (lat, lon) {
+function getLocation() {
+  let cordinateAPI = "https://api.openweathermap.org/geo/1.0/direct?q="+ city +"&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a"
+
+  fetch(cordinateAPI)
+    .then(response => response.json())
+    .then(result => {
+      console.log(result)
+    }
+
+    )
+  
+}
+
+getLocation();
+
+/*var getWeather = function (lat, lon) {
   let weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=' + key;
 
   fetch(weatherAPI)
@@ -61,7 +57,7 @@ var getWeather = function (lat, lon) {
     })
   })
 }
-getLocation()
+getLocation()*/
 
 /*fetch('http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a', {
   // The browser fetches the resource from the remote server without first looking in the cache.
