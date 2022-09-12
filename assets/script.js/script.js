@@ -14,6 +14,12 @@ const lasVegasBtn = document.querySelector('#lasVegasBtn')
 const chicagoBtn = document.querySelector('#chicagoBtn')
 const laBtn = document.querySelector('#laBtn')
 
+const dayOne = document.querySelector('#dayOne');
+const dayTwo = document.querySelector('#dayTwo');
+const dayThree = document.querySelector('#dayThree');
+const dayFour = document.querySelector('#dayFour');
+const dayFive = document.querySelector('#dayFive')
+
 var key = '74ae31b27694c400a00f630e449b8981';
 
 //Nashville Button
@@ -82,11 +88,12 @@ function getLocation(city) {
       let lon = resultsLoc[0].lon
       console.log(lon)
       getWeather(lat, lon)
-      //getFiveDay(lat, lon)
 
       let name = resultsLoc[0].name
       console.log(name)
-      cityName.innerHTML = name      
+      cityName.innerHTML = name
+      
+      getFiveDay()
     }
 
     )
@@ -110,17 +117,42 @@ function getWeather (lat, lon) {
       weatherToday.innerHTML = 'Weather: ' + weather
     })
 }
+function getFiveDay () {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '58a7ac407amsh3758280bd01fa5ap112821jsn3df462a4e577',
+      'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
+    }
+  };
+  
+  fetch('https://weatherbit-v1-mashape.p.rapidapi.com/forecast/3hourly?lat=35.5&lon=-78.5', options)
+    .then(response => response.json())
+    .then(resultsFiveDay => {
+      console.log(resultsFiveDay)
+      
+      //Day one
+      dayOne.innerHTML = "Date: " + resultsFiveDay.data[2].timestamp_utc+ "<br><br>Temp: " + resultsFiveDay.data[2].temp*1.8+32
+      //Day two
+      dayTwo.innerHTML = "Date: " + resultsFiveDay.data[3].timestamp_utc+ "<br><br>Temp: " + resultsFiveDay.data[3].temp*1.8+32
+      //day three
+      dayThree.innerHTML = "Date: " + resultsFiveDay.data[4].timestamp_utc+ "<br><br>Temp: " + resultsFiveDay.data[4].temp*1.8+32
+      //dayfour
+      dayFour.innerHTML = "Date: " + resultsFiveDay.data[5].timestamp_utc+ "<br><br>Temp: " + resultsFiveDay.data[5].temp*1.8+32
+      //dayfive
+      dayFive.innerHTML = "Date: " + resultsFiveDay.data[6].timestamp_utc+ "<br><br>Temp: " + resultsFiveDay.data[6].temp*1.8+32
+    }
+      
+    )
+    .catch(err => console.error(err));
 
-/*function getFiveDay (lat, lon) {
-   let fiveDayAPI = 'api.openweathermap.org/data/2.5/forecast/daily?lat='+lat+'&lon='+lon+'&cnt={cnt}&appid=74ae31b27694c400a00f630e449b8981';
+      //for(i=0; i < 5; i++) {
+        //var forecast = response.data[i]
+        //console.log(forecast)
+        
+}
 
-   fetch(fiveDayAPI)
-   .then(response => response.json())
-   .then(resultsFiveDay => {
-    console.log(resultsFiveDay)
-   })
-
-}*/
+  
 /*fetch('http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a', {
   // The browser fetches the resource from the remote server without first looking in the cache.
   // The browser will then update the cache with the downloaded resource.
@@ -131,5 +163,5 @@ function getWeather (lat, lon) {
   })
   .then(function (data) {
     console.log(data);
-  }); 
-  */
+  });*/
+  

@@ -21,6 +21,11 @@
     border-color: black;
 }
 
+.col {
+    border-style: inset;
+    border-color: black;
+}
+
 #today {
     border-style: inset;
     border-color: black;
