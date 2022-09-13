@@ -141,7 +141,12 @@ function getFiveDay (lat, lon) {
       console.log(now)
       dateToday.innerHTML = now
 
-      let iconNow = "http://openweathermap.org/img/w/" +resultsFiveDay.list[0].weather[0].icon+".png"
+      let iconNow = "http://openweathermap.org/img/w/" +resultsFiveDay.list[0].weather[0].icon+".png";
+      /*let iconDayOne = "http://openweathermap.org/img/w/" +resultsFiveDay.list[1].weather[1].icon+".png";
+      let iconDayTwo = "http://openweathermap.org/img/w/" +resultsFiveDay.list[2].weather[2].icon+".png";
+      let iconDayThree = "http://openweathermap.org/img/w/" +resultsFiveDay.list[3].weather[3].icon+".png";
+      let iconDayFour = "http://openweathermap.org/img/w/" +resultsFiveDay.list[4].weather[4].icon+".png";
+      let iconDayFive = "http://openweathermap.org/img/w/" +resultsFiveDay.list[5].weather[5].icon+".png"*/
       console.log(iconNow)
       iconToday.innerHTML = '<img src=' +iconNow+ " id = image>"
 
@@ -152,6 +157,14 @@ function getFiveDay (lat, lon) {
       let speedNow = resultsFiveDay.list[0].wind.speed
       console.log(speedNow)
       speedToday.innerHTML = 'windspeed: ' + speedNow
+
+      /*console.log(iconDayOne)
+      console.log(iconDayTwo)
+      console.log(iconDayThree)
+      console.log(iconDayFour)
+      console.log(iconDayFive)*/
+
+      
     });
 
 
