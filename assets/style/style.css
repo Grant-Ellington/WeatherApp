@@ -34,3 +34,12 @@
 #image {
  width: 150px;
 }
+
+.text-truncate {
+    display: inline-block
+}
+
+.text-break {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}

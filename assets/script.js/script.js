@@ -199,35 +199,35 @@ function getFiveDay (lat, lon) {
       //day One forecast
       dayOneDate.innerHTML = 'date: '+ resultsFiveDay.list[1].dt_txt
       dayOneIcon.innerHTML = '<img src=' +iconDayOne+ " id = image>"
-      dayOneTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[1].main.temp - 273.15) * 1.8 + 32
+      dayOneTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[1].main.temp - 273.15) * 1.8 + 32)+'</p>'
       dayOneSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[1].wind.speed
       dayOneHum.innerHTML = 'humidity: ' +resultsFiveDay.list[1].main.humidity
       
       // day two forecast
       dayTwoDate.innerHTML = 'date: '+ resultsFiveDay.list[2].dt_txt
       dayTwoIcon.innerHTML = '<img src=' +iconDayTwo+ " id = image>"
-      dayTwoTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[2].main.temp - 273.15) * 1.8 + 32
+      dayTwoTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[2].main.temp - 273.15) * 1.8 + 32)+'</p>'
       dayTwoSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[2].wind.speed
       dayTwoHum.innerHTML = 'humidity: ' +resultsFiveDay.list[2].main.humidity
 
       //day three forecast
       dayThreeDate.innerHTML = 'date: '+ resultsFiveDay.list[3].dt_txt
       dayThreeIcon.innerHTML = '<img src=' +iconDayThree+ " id = image>"
-      dayThreeTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[3].main.temp - 273.15) * 1.8 + 32
+      dayThreeTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[3].main.temp - 273.15) * 1.8 + 32)+'</p>'
       dayThreeSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[3].wind.speed
       dayThreeHum.innerHTML = 'humidity: ' +resultsFiveDay.list[3].main.humidity
 
       //day four forecast
       dayFourDate.innerHTML = 'date: '+ resultsFiveDay.list[4].dt_txt
       dayFourIcon.innerHTML = '<img src=' +iconDayFour+ " id = image>"
-      dayFourTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[4].main.temp - 273.15) * 1.8 + 32
+      dayFourTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[4].main.temp - 273.15) * 1.8 + 32)+'</p>'
       dayFourSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[4].wind.speed
       dayFourHum.innerHTML = 'humidity: ' +resultsFiveDay.list[4].main.humidity
 
       //day five Forecast
       dayFiveDate.innerHTML = 'date: '+ resultsFiveDay.list[5].dt_txt
       dayFiveIcon.innerHTML = '<img src=' +iconDayFive+ " id = image>"
-      dayFiveTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[5].main.temp - 273.15) * 1.8 + 32
+      dayFiveTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[5].main.temp - 273.15) * 1.8 + 32)+'</p>'
       dayFiveSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[5].wind.speed
       dayFiveHum.innerHTML = 'humidity: ' +resultsFiveDay.list[5].main.humidity
 
