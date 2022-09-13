@@ -63,13 +63,17 @@ const dayThree = document.querySelector('#dayThree');
 const dayFour = document.querySelector('#dayFour');
 const dayFive = document.querySelector('#dayFive')
 
+let city = window.localStorage.getItem('place')
+
+
 var key = '74ae31b27694c400a00f630e449b8981';
 
 //Nashville Button
 nashvilleBtn.addEventListener('click', function () {
   console.log('Nashville')
-  let city = ('Nashville')
+  let city = 'Nashville'
   getLocation(city)
+  window.localStorage.setItem('place', JSON.stringify(city))
 })
 
 // New York button
@@ -77,6 +81,7 @@ newYorkBtn.addEventListener('click', function () {
   console.log('Nashville')
   let city = ('New York')
   getLocation(city)
+  window.localStorage.setItem('place', JSON.stringify(city))
 })
 
 // Las Vegas btn
@@ -84,6 +89,7 @@ lasVegasBtn.addEventListener('click', function () {
   console.log('Nashville')
   let city = ('Las Vegas')
   getLocation(city)
+  window.localStorage.setItem('place', JSON.stringify(city))
 })
 
 //Chicago Btn
@@ -91,6 +97,7 @@ chicagoBtn.addEventListener('click', function () {
   console.log('Nashville')
   let city = ('Chicago')
   getLocation(city)
+  window.localStorage.setItem('place', JSON.stringify(city))
 })
 
 // LA btn
@@ -98,6 +105,7 @@ laBtn.addEventListener('click', function () {
   console.log('Nashville')
   let city = ('Las Angeles')
   getLocation(city)
+  window.localStorage.setItem('place', JSON.stringify(city))
 })
 
 
@@ -107,11 +115,12 @@ searchBtn.addEventListener('click', function () {
   console.log('it works')
 
   let city = searchInput.value.trim()
+  window.localStorage.setItem('place', JSON.stringify(city))
 
   if(city) {
   getLocation(city);
   } else {
-    alert('please enter a valid location')
+    alert('You have not choosen a valid city')
   }
 })
 
@@ -148,6 +157,7 @@ function getLocation(city) {
     )
   
 }
+
 
 function getWeather (lat, lon) {
   let weatherAPI = 'https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&appid=' + key;
@@ -279,6 +289,9 @@ function getUV (lat, lon) {
     console.log(resultsUV)
   })
 }
+
+getLocation(city);
+
   
 /*fetch('http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a', {
   // The browser fetches the resource from the remote server without first looking in the cache.
