@@ -281,7 +281,7 @@ function getFiveDay (lat, lon) {
 }
 
 function getUV (lat, lon) {
-  var radiationAPI = 'http://api.openweathermap.org/data/2.5/solar_radiation?lat='+lat+'&lon='+lon+'&appid='+key;
+  var radiationAPI = 'https://api.openweathermap.org/data/2.5/solar_radiation?lat='+lat+'&lon='+lon+'&appid=' +key;
   
   fetch(radiationAPI)
   .then(response => response.json())
