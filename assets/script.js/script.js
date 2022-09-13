@@ -18,8 +18,46 @@ const lasVegasBtn = document.querySelector('#lasVegasBtn')
 const chicagoBtn = document.querySelector('#chicagoBtn')
 const laBtn = document.querySelector('#laBtn')
 
-
+//Day One Dom Selectors
 const dayOne = document.querySelector('#dayOne');
+const dayOneDate = document.querySelector('#dayOneDate')
+const dayOneIcon = document.querySelector('#dayOneIcon')
+const dayOneTemp = document.querySelector('#dayOneTemp')
+const dayOneSpeed = document.querySelector('#dayOneSpeed')
+const dayOneHum = document.querySelector('#dayOneHum')
+
+//day Two DOM selectors
+
+const dayTwoDate = document.querySelector('#dayTwoDate')
+const dayTwoIcon = document.querySelector('#dayTwoIcon')
+const dayTwoTemp = document.querySelector('#dayTwoTemp')
+const dayTwoSpeed = document.querySelector('#dayTwoSpeed')
+const dayTwoHum = document.querySelector('#dayTwoHum')
+
+//day three Dom selectors
+
+const dayThreeDate = document.querySelector('#dayThreeDate')
+const dayThreeIcon = document.querySelector('#dayThreeIcon')
+const dayThreeTemp = document.querySelector('#dayThreeTemp')
+const dayThreeSpeed = document.querySelector('#dayThreeSpeed')
+const dayThreeHum = document.querySelector('#dayThreeHum')
+
+//day four dom selectors
+
+const dayFourDate = document.querySelector('#dayFourDate')
+const dayFourIcon = document.querySelector('#dayFourIcon')
+const dayFourTemp = document.querySelector('#dayFourTemp')
+const dayFourSpeed = document.querySelector('#dayFourSpeed')
+const dayFourHum = document.querySelector('#dayFourHum')
+
+//day five dom selectors
+
+const dayFiveDate = document.querySelector('#dayFiveDate')
+const dayFiveIcon = document.querySelector('#dayFiveIcon')
+const dayFiveTemp = document.querySelector('#dayFiveTemp')
+const dayFiveSpeed = document.querySelector('#dayFiveSpeed')
+const dayFiveHum = document.querySelector('#dayFiveHum')
+
 const dayTwo = document.querySelector('#dayTwo');
 const dayThree = document.querySelector('#dayThree');
 const dayFour = document.querySelector('#dayFour');
@@ -142,11 +180,11 @@ function getFiveDay (lat, lon) {
       dateToday.innerHTML = now
 
       let iconNow = "http://openweathermap.org/img/w/" +resultsFiveDay.list[0].weather[0].icon+".png";
-      /*let iconDayOne = "http://openweathermap.org/img/w/" +resultsFiveDay.list[1].weather[1].icon+".png";
-      let iconDayTwo = "http://openweathermap.org/img/w/" +resultsFiveDay.list[2].weather[2].icon+".png";
-      let iconDayThree = "http://openweathermap.org/img/w/" +resultsFiveDay.list[3].weather[3].icon+".png";
-      let iconDayFour = "http://openweathermap.org/img/w/" +resultsFiveDay.list[4].weather[4].icon+".png";
-      let iconDayFive = "http://openweathermap.org/img/w/" +resultsFiveDay.list[5].weather[5].icon+".png"*/
+      let iconDayOne = "http://openweathermap.org/img/w/" +resultsFiveDay.list[1].weather[0].icon+".png";
+      let iconDayTwo = "http://openweathermap.org/img/w/" +resultsFiveDay.list[2].weather[0].icon+".png";
+      let iconDayThree = "http://openweathermap.org/img/w/" +resultsFiveDay.list[3].weather[0].icon+".png";
+      let iconDayFour = "http://openweathermap.org/img/w/" +resultsFiveDay.list[4].weather[0].icon+".png";
+      let iconDayFive = "http://openweathermap.org/img/w/" +resultsFiveDay.list[5].weather[0].icon+".png"
       console.log(iconNow)
       iconToday.innerHTML = '<img src=' +iconNow+ " id = image>"
 
@@ -157,14 +195,43 @@ function getFiveDay (lat, lon) {
       let speedNow = resultsFiveDay.list[0].wind.speed
       console.log(speedNow)
       speedToday.innerHTML = 'windspeed: ' + speedNow
-
-      /*console.log(iconDayOne)
-      console.log(iconDayTwo)
-      console.log(iconDayThree)
-      console.log(iconDayFour)
-      console.log(iconDayFive)*/
-
       
+      //day One forecast
+      dayOneDate.innerHTML = 'date: '+ resultsFiveDay.list[1].dt_txt
+      dayOneIcon.innerHTML = '<img src=' +iconDayOne+ " id = image>"
+      dayOneTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[1].main.temp - 273.15) * 1.8 + 32
+      dayOneSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[1].wind.speed
+      dayOneHum.innerHTML = 'humidity: ' +resultsFiveDay.list[1].main.humidity
+      
+      // day two forecast
+      dayTwoDate.innerHTML = 'date: '+ resultsFiveDay.list[2].dt_txt
+      dayTwoIcon.innerHTML = '<img src=' +iconDayTwo+ " id = image>"
+      dayTwoTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[2].main.temp - 273.15) * 1.8 + 32
+      dayTwoSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[2].wind.speed
+      dayTwoHum.innerHTML = 'humidity: ' +resultsFiveDay.list[2].main.humidity
+
+      //day three forecast
+      dayThreeDate.innerHTML = 'date: '+ resultsFiveDay.list[3].dt_txt
+      dayThreeIcon.innerHTML = '<img src=' +iconDayThree+ " id = image>"
+      dayThreeTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[3].main.temp - 273.15) * 1.8 + 32
+      dayThreeSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[3].wind.speed
+      dayThreeHum.innerHTML = 'humidity: ' +resultsFiveDay.list[3].main.humidity
+
+      //day four forecast
+      dayFourDate.innerHTML = 'date: '+ resultsFiveDay.list[4].dt_txt
+      dayFourIcon.innerHTML = '<img src=' +iconDayFour+ " id = image>"
+      dayFourTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[4].main.temp - 273.15) * 1.8 + 32
+      dayFourSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[4].wind.speed
+      dayFourHum.innerHTML = 'humidity: ' +resultsFiveDay.list[4].main.humidity
+
+      //day five Forecast
+      dayFiveDate.innerHTML = 'date: '+ resultsFiveDay.list[5].dt_txt
+      dayFiveIcon.innerHTML = '<img src=' +iconDayFive+ " id = image>"
+      dayFiveTemp.innerHTML = 'Temp: '+(resultsFiveDay.list[5].main.temp - 273.15) * 1.8 + 32
+      dayFiveSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[5].wind.speed
+      dayFiveHum.innerHTML = 'humidity: ' +resultsFiveDay.list[5].main.humidity
+
+
     });
 
 
