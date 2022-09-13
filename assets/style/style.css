@@ -30,3 +30,7 @@
     border-style: inset;
     border-color: black;
 }
+
+#image {
+ width: 150px;
+}

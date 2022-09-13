@@ -5,14 +5,19 @@ var searchInput = document.getElementById('searchInput')
 var searchBtn = document.getElementById('searchBtn')
 
 let cityName = document.getElementById('cityName')
+let dateToday = document.querySelector('#dateToday')
 let tempToday = document.getElementById('tempToday')
 let weatherToday = document.getElementById('weatherToday')
+let iconToday = document.querySelector('#iconToday')
+let humidityToday = document.querySelector('#humidityToday')
+let speedToday = document.querySelector('#speedToday')
 
 const nashvilleBtn = document.querySelector('#nashvilleBtn')
 const newYorkBtn = document.querySelector('#newYorkBtn')
 const lasVegasBtn = document.querySelector('#lasVegasBtn')
 const chicagoBtn = document.querySelector('#chicagoBtn')
 const laBtn = document.querySelector('#laBtn')
+
 
 const dayOne = document.querySelector('#dayOne');
 const dayTwo = document.querySelector('#dayTwo');
@@ -98,7 +103,8 @@ function getLocation(city) {
       console.log(name)
       cityName.innerHTML = name
       
-      getFiveDay()
+      getFiveDay(lat, lon)
+      getUV(lat,lon)
     }
 
     )
@@ -122,8 +128,35 @@ function getWeather (lat, lon) {
       weatherToday.innerHTML = 'Weather: ' + weather
     })
 }
-function getFiveDay () {
-  const options = {
+function getFiveDay (lat, lon) {
+
+    const fiveDay = 'https://api.openweathermap.org/data/2.5/forecast?lat='+ lat+'&lon='+lon+'&appid='+ key;
+
+    fetch(fiveDay)
+    .then(response=>response.json())
+    .then(resultsFiveDay => {
+      console.log(resultsFiveDay)
+
+      let now = resultsFiveDay.list[0].dt_txt
+      console.log(now)
+      dateToday.innerHTML = now
+
+      let iconNow = "http://openweathermap.org/img/w/" +resultsFiveDay.list[0].weather[0].icon+".png"
+      console.log(iconNow)
+      iconToday.innerHTML = '<img src=' +iconNow+ " id = image>"
+
+      let humidityNow = resultsFiveDay.list[0].main.humidity;
+      console.log(humidityNow)
+      humidityToday.innerHTML = 'humidity: '+humidityNow
+
+      let speedNow = resultsFiveDay.list[0].wind.speed
+      console.log(speedNow)
+      speedToday.innerHTML = 'windspeed: ' + speedNow
+    });
+
+
+  // retry original link with https
+  /*const options = {
     method: 'GET',
     headers: {
       'X-RapidAPI-Key': '58a7ac407amsh3758280bd01fa5ap112821jsn3df462a4e577',
@@ -153,10 +186,19 @@ function getFiveDay () {
 
       //for(i=0; i < 5; i++) {
         //var forecast = response.data[i]
-        //console.log(forecast)
+        //console.log(forecast)*/
         
 }
 
+function getUV (lat, lon) {
+  var radiationAPI = 'http://api.openweathermap.org/data/2.5/solar_radiation?lat='+lat+'&lon='+lon+'&appid='+key;
+  
+  fetch(radiationAPI)
+  .then(response => response.json())
+  .then(resultsUV => {
+    console.log(resultsUV)
+  })
+}
   
 /*fetch('http://api.openweathermap.org/geo/1.0/direct?q=Tennessee&limit=5&appid=8e63ee673b69ef9b660b0e01ef8bfc2a', {
   // The browser fetches the resource from the remote server without first looking in the cache.
