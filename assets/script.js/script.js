@@ -167,7 +167,7 @@ function getWeather (lat, lon) {
     .then(resultsWeather => {
       console.log(resultsWeather)
 
-      let temp = (resultsWeather.main.temp - 273.15) * 1.8 + 32
+      let temp = Math.round((resultsWeather.main.temp - 273.15)) * 1.8 + 32
       console.log(temp)
       tempToday.innerHTML = 'Temperature:'+temp +' ˚ F'
 
@@ -209,35 +209,35 @@ function getFiveDay (lat, lon) {
       //day One forecast
       dayOneDate.innerHTML = 'date: '+ resultsFiveDay.list[1].dt_txt
       dayOneIcon.innerHTML = '<img src=' +iconDayOne+ " id = image>"
-      dayOneTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[1].main.temp - 273.15) * 1.8 + 32)+'</p>'
+      dayOneTemp.innerHTML = '<p class= text-break>Temp: '+Math.round(((resultsFiveDay.list[1].main.temp - 273.15) * 1.8 + 32))+' ˚ F</p>'
       dayOneSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[1].wind.speed
       dayOneHum.innerHTML = 'humidity: ' +resultsFiveDay.list[1].main.humidity
       
       // day two forecast
       dayTwoDate.innerHTML = 'date: '+ resultsFiveDay.list[2].dt_txt
       dayTwoIcon.innerHTML = '<img src=' +iconDayTwo+ " id = image>"
-      dayTwoTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[2].main.temp - 273.15) * 1.8 + 32)+'</p>'
+      dayTwoTemp.innerHTML = '<p class= text-break>Temp: '+Math.round(((resultsFiveDay.list[2].main.temp - 273.15) * 1.8 + 32))+' ˚ F</p>'
       dayTwoSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[2].wind.speed
       dayTwoHum.innerHTML = 'humidity: ' +resultsFiveDay.list[2].main.humidity
 
       //day three forecast
       dayThreeDate.innerHTML = 'date: '+ resultsFiveDay.list[3].dt_txt
       dayThreeIcon.innerHTML = '<img src=' +iconDayThree+ " id = image>"
-      dayThreeTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[3].main.temp - 273.15) * 1.8 + 32)+'</p>'
+      dayThreeTemp.innerHTML = '<p class= text-break>Temp: '+Math.round(((resultsFiveDay.list[3].main.temp - 273.15) * 1.8 + 32))+' ˚ F</p>'
       dayThreeSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[3].wind.speed
       dayThreeHum.innerHTML = 'humidity: ' +resultsFiveDay.list[3].main.humidity
 
       //day four forecast
       dayFourDate.innerHTML = 'date: '+ resultsFiveDay.list[4].dt_txt
       dayFourIcon.innerHTML = '<img src=' +iconDayFour+ " id = image>"
-      dayFourTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[4].main.temp - 273.15) * 1.8 + 32)+'</p>'
+      dayFourTemp.innerHTML = '<p class= text-break>Temp: '+Math.round(((resultsFiveDay.list[4].main.temp - 273.15) * 1.8 + 32))+' ˚ F</p>'
       dayFourSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[4].wind.speed
       dayFourHum.innerHTML = 'humidity: ' +resultsFiveDay.list[4].main.humidity
 
       //day five Forecast
       dayFiveDate.innerHTML = 'date: '+ resultsFiveDay.list[5].dt_txt
       dayFiveIcon.innerHTML = '<img src=' +iconDayFive+ " id = image>"
-      dayFiveTemp.innerHTML = '<p class= text-break>Temp: '+((resultsFiveDay.list[5].main.temp - 273.15) * 1.8 + 32)+'</p>'
+      dayFiveTemp.innerHTML = '<p class= text-break>Temp: '+Math.round(((resultsFiveDay.list[5].main.temp - 273.15) * 1.8 + 32))+' ˚ F</p>'
       dayFiveSpeed.innerHTML = 'Windspeed: '+resultsFiveDay.list[5].wind.speed
       dayFiveHum.innerHTML = 'humidity: ' +resultsFiveDay.list[5].main.humidity
 
@@ -245,7 +245,7 @@ function getFiveDay (lat, lon) {
     });
 
 
-  // retry original link with https
+  // still cant get weather api to work for the UV
   /*const options = {
     method: 'GET',
     headers: {
